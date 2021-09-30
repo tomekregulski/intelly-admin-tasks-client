@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 
 function FileUpload() {
@@ -7,6 +7,17 @@ function FileUpload() {
   // const [data, getFile] = useState({ name: '', path: '' });
   const [progress, setProgess] = useState(0); // progess bar
   const el = useRef(); // accesing input element
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axios.get(
+        // 'http://localhost:4500/'
+        'https://intelly-admin-task-server.herokuapp.com/'
+      );
+      console.log(response.data);
+    }
+    fetchData();
+  });
 
   const handleChange = (e) => {
     setProgess(0);
@@ -21,9 +32,13 @@ function FileUpload() {
     axios
       .post(
         'https://intelly-admin-task-server.herokuapp.com/upload',
+        // 'http://localhost:4500/upload',
         formData,
         {
-          headers: { 'Access-Control-Allow-Origin': '*' },
+          headers: {
+            'Content-Type': file.type,
+            'Access-Control-Allow-Origin': '*',
+          },
         },
         {
           onUploadProgress: (ProgressEvent) => {
@@ -35,7 +50,7 @@ function FileUpload() {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => console.log(err));
   };
