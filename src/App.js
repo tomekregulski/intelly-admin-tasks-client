@@ -1,10 +1,12 @@
 import React from 'react';
-import FileUpload from './FileUpload';
+import FileUpload from './components/FileUpload';
+import NavbarSwitch from './components/Navbar/NavbarSwitch';
 import './App.css';
 
 function App() {
   return (
     <div className='App'>
+      <NavbarSwitch />
       <FileUpload />
     </div>
   );
