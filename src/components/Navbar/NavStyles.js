@@ -1,15 +1,15 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   nav: {
-    marginTop: '1rem',
-    marginBottom: '.2rem',
+    // marginTop: '1rem',
+    // marginBottom: '.2rem',
   },
   desktopNavContainer: {
     display: 'flex',
   },
   logo: {
     // width: '130px',
-    margin: '0 auto 10px',
+    // margin: '0 auto 10px',
     display: 'block',
   },
   navLinks: {
@@ -43,7 +43,7 @@ export default {
   '@media screen and (min-width: 1200px)': {
     nav: {
       maxWidth: 'none',
-      padding: '10px 20px',
+      padding: '0 20px',
     },
   },
   '@media screen and (min-width: 1550px)': {},
