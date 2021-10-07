@@ -1,8 +1,9 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   nav: {
-    // marginTop: '1rem',
-    // marginBottom: '.2rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   desktopNavContainer: {
     display: 'flex',

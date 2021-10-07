@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 
-function FileUpload() {
+function IntellyDataUpload() {
   const [file, setFile] = useState('');
   const el = useRef();
 
@@ -26,8 +26,10 @@ function FileUpload() {
     formData.append('file', file); // appending file
     axios
       .post(
-        'https://intelly-admin-task-server.herokuapp.com/upload',
-        // 'http://localhost:4500/upload',
+        // 'https://intelly-admin-task-server.herokuapp.com/upload',
+        // 'http://localhost:4500/excel/upload',
+        'https://intelly-admin-task-server.herokuapp.com/excel/upload',
+        // 'http://localhost:8080/api/csv/upload',
         formData,
         {
           headers: {
@@ -45,7 +47,7 @@ function FileUpload() {
   return (
     <div>
       <div className='file-upload'>
-        <p>Choose a PDF file to scan</p>
+        <p>Select an Excel File to Upload</p>
         <input type='file' ref={el} onChange={handleChange} />
         <button onClick={uploadFile} className='upbutton'>
           Upload
@@ -55,4 +57,4 @@ function FileUpload() {
   );
 }
 
-export default FileUpload;
+export default IntellyDataUpload;
