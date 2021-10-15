@@ -11,7 +11,7 @@ const NavbarLoggedIn = (props) => {
   const { user } = useContext(AuthContext);
   // eslint-disable-next-line no-unused-vars
   const [userData, setUserData] = user;
-
+  const [access, setAccess] = useState([]);
   const [query, setQuery] = useState({});
 
   const { handleLogout } = props;
@@ -22,6 +22,7 @@ const NavbarLoggedIn = (props) => {
         email: userData.email,
         password: userData.password,
       });
+      setAccess(userData.access.split(','));
     }
   }, [userData]);
 
@@ -59,7 +60,9 @@ const NavbarLoggedIn = (props) => {
           <Link style={{ marginRight: '15px' }} to='/invoice-scan'>
             Invoice Scan
           </Link>
-          <Link to='/intelly-upload'>Intelly Upload</Link>
+          {access.includes('admin') && (
+            <Link to='/intelly-upload'>Intelly Upload</Link>
+          )}
         </div>
       </nav>
       <div
