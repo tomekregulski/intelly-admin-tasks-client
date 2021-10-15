@@ -1,10 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Dashboard from './components/Dashboard';
-import InvoiceScan from './components/InvoiceScan';
-import IntellyDataUpload from './components/IntellyDataUpload';
+import { Dashboard, Login, InvoiceScan, IntellyDataUpload } from './Pages';
 import NavbarSwitch from './components/Navbar/NavbarSwitch';
+import ProtectedRoute from './ProtectedRoute';
 
 import './App.css';
 
@@ -13,9 +12,13 @@ function App() {
     <div className='App'>
       <NavbarSwitch />
       <Switch>
-        <Route exact path={'/'} component={Dashboard} />
-        <Route path={'/invoice-scan'} component={InvoiceScan} />
-        <Route path={'/intelly-upload'} component={IntellyDataUpload} />
+        <ProtectedRoute exact path={'/'} component={Dashboard} />
+        <ProtectedRoute path={'/invoice-scan'} component={InvoiceScan} />
+        <ProtectedRoute
+          path={'/intelly-upload'}
+          component={IntellyDataUpload}
+        />
+        <Route exact path='/login' component={Login} />
       </Switch>
     </div>
   );
