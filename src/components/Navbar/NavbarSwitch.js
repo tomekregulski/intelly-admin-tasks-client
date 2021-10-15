@@ -1,15 +1,33 @@
-import React from 'react';
-import NavbarLoggedOut from './NavbarLoggedOut';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../../context/AuthContext';
+import NavbarLoggedIn from './NavbarLoggedIn';
+// import NavbarLoggedOut from './NavbarLoggedOut';
+
+import axios from 'axios';
 
 function NavbarSwitch() {
-  return (
-    <nav>
-      <NavbarLoggedOut />
-      <div
-        style={{ height: '48px', backgroundColor: 'rgba(0, 180, 249, 0.872)' }}
-      ></div>
-    </nav>
-  );
+  const { auth, user } = useContext(AuthContext);
+  const [isAuth, setIsAuth] = auth;
+  // eslint-disable-next-line no-unused-vars
+  const [userData, setUserData] = user;
+
+  const history = useHistory();
+
+  const handleLogout = () => {
+    axios.post('https://intelly-auth-service.herokuapp.com/api/users/logout');
+    localStorage.removeItem('user');
+    setUserData({});
+    setIsAuth(false);
+    history.push('/login');
+  };
+
+  if (isAuth === true) {
+    return <NavbarLoggedIn handleLogout={handleLogout} />;
+  } else {
+    return null;
+  }
 }
 
 export default NavbarSwitch;

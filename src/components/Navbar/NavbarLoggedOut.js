@@ -1,20 +1,30 @@
 import React from 'react';
-import { withStyles } from '@material-ui/styles';
-import styles from './NavStyles';
+// import { withStyles } from '@material-ui/styles';
+// import styles from './NavStyles';
 import { Link } from 'react-router-dom';
 import image from '../../images/intelly_logo.png';
 
 function NavbarLoggedOut(props) {
-  const { classes } = props;
+  // const { classes } = props;
 
   return (
-    <nav className={classes.nav}>
-      <div className={classes.navLinksRight}>
+    <nav
+    // className={classes.nav}
+    >
+      <div
+      // className={classes.navLinksRight}
+      >
         <Link to='/'>
-          <img className={classes.logo} src={image} alt='Intelly' />
+          <img
+            // className={classes.logo}
+            src={image}
+            alt='Intelly'
+          />
         </Link>
       </div>
-      <div className={classes.navLinksLeft}>
+      <div
+      // className={classes.navLinksLeft}
+      >
         <Link style={{ marginRight: '15px' }} to='/invoice-scan'>
           Invoice Scan
         </Link>
@@ -24,4 +34,4 @@ function NavbarLoggedOut(props) {
   );
 }
 
-export default withStyles(styles)(NavbarLoggedOut);
+export default NavbarLoggedOut;
