@@ -42,8 +42,8 @@ const ProtectedRoute = (props) => {
       };
       return axios
         .post(
-          // 'https://intelly-auth-service.herokuapp.com/api/users/login-link',
-          'http://localhost:5000/api/users/login-link',
+          'https://intelly-auth-service.herokuapp.com/api/users/login-link',
+          // 'http://localhost:5000/api/users/login-link',
           {
             payload,
           }
