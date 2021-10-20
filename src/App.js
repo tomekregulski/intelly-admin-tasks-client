@@ -6,11 +6,24 @@ import NavbarSwitch from './components/Navbar/NavbarSwitch';
 import ProtectedRoute from './ProtectedRoute';
 import VenueUpload from './Pages/VenueUpload';
 
-import './App.css';
-
 function App() {
   return (
-    <div className='App'>
+    <div
+      style={{
+        fontFamily: [
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          '"Helvetica Neue"',
+          'Arial',
+          'sans-serif',
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+        ],
+      }}
+    >
       <NavbarSwitch />
       <Switch>
         <ProtectedRoute exact path={'/'} component={Dashboard} />
