@@ -1,10 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 
-function InvoiceScan() {
+function VenueUpload() {
   const [file, setFile] = useState('');
-  const [resData, setResData] = useState([]);
-
   const el = useRef();
 
   useEffect(() => {
@@ -27,20 +25,14 @@ function InvoiceScan() {
     const formData = new FormData();
     formData.append('file', file); // appending file
     axios
-      .post(
-        'https://intelly-admin-task-server.herokuapp.com/invoice-upload',
-        // 'http://localhost:4500/invoice-upload',
-        formData,
-        {
-          headers: {
-            'Content-Type': file.type,
-            'Access-Control-Allow-Origin': '*',
-          },
-        }
-      )
+      .post('http://localhost:5001/api/venues/bulk', formData, {
+        headers: {
+          'Content-Type': file.type,
+          'Access-Control-Allow-Origin': '*',
+        },
+      })
       .then((res) => {
         console.log(res.data);
-        setResData(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -48,30 +40,14 @@ function InvoiceScan() {
   return (
     <div>
       <div className='file-upload'>
-        <p>Select an Invoice PDF to Scan</p>
+        <p>Select an Excel File to Upload Venues</p>
         <input type='file' ref={el} onChange={handleChange} />
         <button onClick={uploadFile} className='upbutton'>
           Upload
         </button>
       </div>
-      <div style={{ marginTop: '100px', textAlign: 'center' }}>
-        {resData.length ? (
-          resData.map((item, index) => {
-            console.log(item);
-            console.log(item.definition);
-            return (
-              <p key={index}>
-                Code: {item.code} | Count: {item.count} | Meaning:{' '}
-                {item.definition}
-              </p>
-            );
-          })
-        ) : (
-          <p>This is where you report will appear</p>
-        )}
-      </div>
     </div>
   );
 }
 
-export default InvoiceScan;
+export default VenueUpload;
