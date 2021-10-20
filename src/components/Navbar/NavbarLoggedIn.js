@@ -1,72 +1,41 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../../context/AuthContext';
 
+import { withStyles } from '@material-ui/styles';
+import styles from './NavStyles';
 import image from '../../images/intelly_logo.png';
 
-import Button from '@mui/material/Button';
+import UserMenu from '../UserMenu/UserMenu';
+import ServiceMenu from '../ServiceMenu/ServiceMenu';
 
 const NavbarLoggedIn = (props) => {
   const { user } = useContext(AuthContext);
   // eslint-disable-next-line no-unused-vars
   const [userData, setUserData] = user;
-  const [access, setAccess] = useState([]);
   const [query, setQuery] = useState({});
 
-  const { handleLogout } = props;
+  const { classes, handleLogout } = props;
 
   useEffect(() => {
     if (Object.keys(userData).length) {
       setQuery({
         token: userData.token,
       });
-      setAccess(userData.access.split(','));
     }
   }, [userData]);
 
   return (
-    <>
-      <nav
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
+    <nav className={classes.nav}>
+      <div className={classes.navLinks}>
+        <ServiceMenu />
         <a href={`https://gallant-wing-415919.netlify.app/?${query.token}`}>
-          <img
-            style={{ width: '10rem', margin: '.5rem 0 .5rem 0' }}
-            src={image}
-            alt='Intelly'
-          />
+          <img className={classes.logo} src={image} alt='Intelly' />
         </a>
-        <div>
-          <Button
-            variant='outlined'
-            style={{ marginBottom: '10px' }}
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </Button>
-        </div>
-        <div
-        // className={classes.navLinksLeft}
-        >
-          <Link style={{ marginRight: '15px' }} to='/invoice-scan'>
-            Invoice Scan
-          </Link>
-          {access.includes('admin') && (
-            <Link to='/intelly-upload'>Intelly Upload</Link>
-          )}
-        </div>
-      </nav>
-      <div
-        style={{ height: '48px', backgroundColor: 'rgba(0, 180, 249, 0.872)' }}
-      ></div>
-    </>
+        <UserMenu handleLogout={handleLogout} />
+      </div>
+    </nav>
   );
 };
 
-export default NavbarLoggedIn;
+export default withStyles(styles)(NavbarLoggedIn);
