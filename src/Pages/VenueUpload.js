@@ -49,7 +49,7 @@ function VenueUpload() {
       >
         <p>Select an Venue Upload Template (.xlsx) to upload</p>
         <label
-          for='venue-upload'
+          htmlFor='venue-upload'
           style={{
             border: '1px solid rgba(0, 180, 249, 0.872)',
             display: 'inline-block',

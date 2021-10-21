@@ -16,9 +16,9 @@ As mentioned above, Intelly is split into several independent repos in order to 
 
 The repo you are currently visiting is the front end for the Administrative Tasks App. Its purpose is to allow brands to streamline certain tasks. This particular project is at a very early stage of development. At the moment, its primary function is a proof-of-concept for a PDF parser that is specifically intended to to allow brands to submit invoices from distributors, identify generally cryptic reimbursement codes, and decide if they wish to take action to collect those reimbursements.
 
-At the moment, the process exists in an early stage that simply tests the workflow, and has much development ahead of it.
+Currently, the process exists in an early stage that simply tests the workflow, and has much development ahead of it.
 
-Additionally, while not available to the guest account, there is a similar service that allows us to upload bulk data to our Retail Data Dashboard, proividing a crucial service to that project.
+Additionally, while not available to the guest account, there is a similar service that allows us to upload bulk data from excel sheet to services such as our Retail Data Dashboard and Events Back End, proividing a crucial service to those projects.
 
 # Additional Goals for Development
 

@@ -62,7 +62,7 @@ function IntellyDataUpload() {
           Select a WFM Timeframe Data Template (.xlsx) to upload
         </p>
         <label
-          for='intelly-wfm-upload'
+          htmlFor='intelly-wfm-upload'
           style={{
             border: '1px solid rgba(0, 180, 249, 0.872)',
             display: 'inline-block',

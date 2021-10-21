@@ -62,7 +62,7 @@ function InvoiceScan() {
       >
         <p>Select an Invoice PDF to Scan</p>
         <label
-          for='invoice-upload'
+          htmlFor='invoice-upload'
           style={{
             border: '1px solid rgba(0, 180, 249, 0.872)',
             display: 'inline-block',
