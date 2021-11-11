@@ -10,7 +10,6 @@ function IntellyDataUpload() {
   useEffect(() => {
     async function fetchData() {
       const response = await axios.get(
-        // 'http://localhost:4500/'
         'https://intelly-admin-task-server.herokuapp.com/'
       );
       console.log(response.data);
