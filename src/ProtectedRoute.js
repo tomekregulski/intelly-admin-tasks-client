@@ -72,7 +72,18 @@ const ProtectedRoute = (props) => {
   }, [credentials.token, credentials, setCredentials, setIsAuth, setUserData]);
 
   if (isLoading === true) {
-    return <h1>Loading</h1>;
+    return (
+      <div
+        style={{
+          fontWeight: '400',
+          fontSize: '32px',
+          textAlign: 'center',
+          marginTop: '50px',
+        }}
+      >
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   if ((isLoading === false && isAuth) === true) {
